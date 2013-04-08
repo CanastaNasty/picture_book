@@ -30,6 +30,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:books) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -139,5 +140,28 @@ end
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "book associations" do
+    before { @user.save }
+    let!(:second_book) do
+      FactoryGirl.create :book, user: @user, title: "Second Book"
+    end
+    let!(:first_book) do
+      FactoryGirl.create :book, user: @user, title: "First Book"
+    end
+
+    it "should have the books ordered alphabetically" do
+      @user.books.should == [first_book, second_book]
+    end
+
+    it "should destroy associated books" do
+      books = @user.books.dup
+      @user.destroy
+      books.should_not be_empty
+      books.each do |book|
+        Book.find_by_id(book.id).should be_nil
+      end
+    end
   end
 end
