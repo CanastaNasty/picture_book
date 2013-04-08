@@ -1,4 +1,4 @@
-# Ruby on Rails Tutorial: sample application
+# Picture Book
 
 To Do:
 * Add user books view
