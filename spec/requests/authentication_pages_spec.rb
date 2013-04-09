@@ -79,6 +79,19 @@ describe "Authentication" do
           specify { response.should redirect_to(signin_path) }
         end
 
+        describe "in books controller" do
+
+          describe "submitting to the create action" do
+            before { post books_path }
+            specify { response.should redirect_to(signin_path) }
+          end
+
+          describe "submitting to the destroy action" do
+            before { delete book_path(FactoryGirl.create(:book)) }
+            specify { response.should redirect_to(signin_path) }
+          end
+        end
+
         describe "visiting the user index" do
           before { visit users_path }
           it { should have_selector('title', text: 'Sign in') }

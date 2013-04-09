@@ -1,7 +1,7 @@
 # Picture Book
 
 To Do:
-* Add user books view
+* Improve book views
 * Add pages to books
 * Allow image and sound uploading
 * Add gesture recognition for easy browsing by babies
