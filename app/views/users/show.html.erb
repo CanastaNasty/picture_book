@@ -7,6 +7,7 @@
         <%= @user.name %>
       </h1>
     </section>
+    <%= link_to "New Book!", new_book_path, class: "btn btn-primary pull-right" %>
   </aside>
   <div class="span8">
     <% if @user.books.any? %>

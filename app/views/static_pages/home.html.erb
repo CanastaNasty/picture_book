@@ -4,11 +4,13 @@
       <section>
         <%= render 'shared/user_info' %>
       </section>
-      <section>
-        <%= render 'shared/book_form' %>
-      </section>
     </aside>
+    <%= link_to "New Book!", new_book_path, class: "btn btn-primary center" %>
   </div>  
+
+  <div class="center">
+  <%= link_to image_tag("picture_book.png", alt: "Picture Book"), 'http://rubyonrails.org/' %>
+  </div>
 <% else %>
   <div class="center hero-unit">
 	<h1>Welcome to Picture Book</h1>

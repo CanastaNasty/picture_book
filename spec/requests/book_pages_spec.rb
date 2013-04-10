@@ -8,7 +8,10 @@ describe "Book pages" do
   before { sign_in user }
 
   describe "book creation" do
-    before { visit root_path }
+    before { visit new_book_path }
+
+    it { should have_selector('title', text: 'New Book') }
+    it { should have_selector('h1', text: 'New Book') }
 
     describe "with invalid information" do
 
@@ -35,7 +38,7 @@ describe "Book pages" do
     before { FactoryGirl.create(:book, user: user) }
 
     describe "as correct user" do
-      before { visit root_path }
+      before { visit user_path(user) }
 
       it "should delete a book" do
         expect { click_link "delete" }.to change(Book, :count).by(-1)
