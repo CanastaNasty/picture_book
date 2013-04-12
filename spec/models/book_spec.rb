@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe Book do
   let(:user) { FactoryGirl.create(:user) }
-  before { @book = user.books.build(title: "Lorem Ipsum", cover: "Dolor Sit Amet") }
+  before { @book = user.books.build(title: "Lorem Ipsum") }
 
   subject { @book }
 
   it { should respond_to(:title) }
-  it { should respond_to(:cover) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should == user }

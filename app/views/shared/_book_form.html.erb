@@ -2,7 +2,6 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field span4">
     <%= f.text_field :title, placeholder: "Title of new book" %>
-  	<%= f.text_field :cover, placeholder: "Cover image link (optional)" %>
   </div>
     <%= f.submit "Create", class: "btn btn-large btn-primary" %>
 <% end %>

@@ -12,7 +12,6 @@ FactoryGirl.define do
 
   factory :book do
   	title "Lorem Ipsum"
-  	cover "Dolor Sit Amet"
   	user
   end
 end
