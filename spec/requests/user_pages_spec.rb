@@ -4,9 +4,9 @@ describe "User pages" do
 
   subject { page }
 
-  describe "index" do
+  let(:user) { FactoryGirl.create(:user) }
 
-    let(:user) { FactoryGirl.create(:user) }
+  describe "index" do
 
     before(:each) do
       sign_in user
@@ -51,19 +51,23 @@ describe "User pages" do
   end
 
   describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
-    let!(:b1) { FactoryGirl.create(:book, user: user, title: "Foo") }
-    let!(:b2) { FactoryGirl.create(:book, user: user, title: "Bar") }
 
-    before { visit user_path(user) }
+    before do
+     @book = FactoryGirl.create(:book, user: user, title: "Foo")
+     visit user_path(user)     
+    end
 
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
 
     describe "books" do
-      it { should have_content(b1.title) }
-      it { should have_content(b2.title) }
+      it { should have_content(@book.title) }
       it { should have_content(user.books.count) }
+    end
+
+    it "should link to books" do
+      click_link 'Foo'
+      page.should have_selector 'title', text: full_title('Foo')
     end
   end
 
@@ -110,7 +114,6 @@ describe "User pages" do
   end
 
   describe "edit" do
-    let(:user) { FactoryGirl.create(:user) }
     before do
       sign_in user
       visit edit_user_path(user)

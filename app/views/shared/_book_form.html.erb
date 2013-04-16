@@ -2,6 +2,11 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field span4">
     <%= f.text_field :title, placeholder: "Title of new book" %>
+    <div>
+      <%= f.fields_for(:pages) do |builder| %>
+        <%= render 'shared/page_form', f: builder %>
+      <% end %>
+    </div>
   </div>
     <%= f.submit "Create", class: "btn btn-large btn-primary" %>
 <% end %>

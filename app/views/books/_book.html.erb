@@ -1,5 +1,5 @@
 <li>
-  <span class="title"><%= book.title %></span>
+  <span class="title"><%= link_to book.title, book_path(book) %></span>
   <% if current_user?(book.user) %>
     <%= link_to "delete", book, method: :delete,
                                      data: { confirm: "You sure?" },

@@ -1,5 +1,10 @@
 <% provide(:title, @book.title) %>
 <div class="center hero-unit">
-	<section class="Page">
-		<% if @book.pages.any? %>
+  <h1>
+    <%= @book.title %>
+  </h1>
+  <section class="Page">
+    <% if @book.pages.any? %>
+    <% end %>
+  </section>   
 </div>

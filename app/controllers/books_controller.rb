@@ -4,6 +4,11 @@ class BooksController < ApplicationController
 
   def new
     @book = current_user.books.build if signed_in?
+    @book.pages.build
+  end
+
+  def show
+    @book = Book.find(params[:id])
   end
 
   def create
