@@ -1,6 +1,6 @@
 <%= nested_form_for(@book) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field span4">
+  <div class="field span4 row">
     <%= f.text_field :title, placeholder: "Title of new book" %>
     <div>
       <%= f.fields_for(:book_pages) do |builder| %>
@@ -9,5 +9,7 @@
       <p><%= f.link_to_add "Add a page", :book_pages %></p>
     </div>
   </div>
+  <div class = "row">
     <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+  </div>
 <% end %>
