@@ -64,7 +64,8 @@ describe "Book pages" do
       after(:all) { Book.delete_all }
 
       it { should have_selector('div.pagination') }
-      it { should have_content(@book.pages.count) }
+      it { should have_content(Book.pages.count) }
+      it { should have_selector('audio') }
     end
   end
 end
