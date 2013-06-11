@@ -4,5 +4,6 @@
     <%= link_to "delete", book, method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: book.title %>
+    <%= link_to "edit", edit_book_path(book) %>
   <% end %>
 </li>

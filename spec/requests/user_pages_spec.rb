@@ -63,11 +63,11 @@ describe "User pages" do
     describe "books" do
       it { should have_content(@book.title) }
       it { should have_content(user.books.count) }
-    end
 
-    it "should link to books" do
-      click_link 'Foo'
-      page.should have_selector 'title', text: full_title('Foo')
+      it "titles should link to books" do
+        click_link 'Foo'
+        page.should have_selector 'title', text: full_title('Foo')
+      end
     end
   end
 

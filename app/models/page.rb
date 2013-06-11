@@ -3,6 +3,4 @@ class Page < ActiveRecord::Base
   belongs_to :book
 
   validates :book, presence: true
-
-  default_scope order: 'pages.page_num DESC'
 end

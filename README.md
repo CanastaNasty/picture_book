@@ -1,8 +1,9 @@
 # Picture Book
 
 To Do:
-* Improve book views
-* Add pages to books
+* Create index for all books
+* Allow books to be public or private
+* Standardize page size
 * Allow image and sound uploading
 * Add gesture recognition for easy browsing by babies
 

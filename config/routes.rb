@@ -1,7 +1,7 @@
 PictureBook::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :books, only: [:show, :index, :new, :create, :destroy]
+  resources :books
 
   root to: 'static_pages#home'
 

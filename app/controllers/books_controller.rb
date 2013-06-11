@@ -1,10 +1,24 @@
 class BooksController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :destroy]
-  before_filter :correct_user,   only: :destroy
+  before_filter :correct_user,   only: [:destroy, :edit]
 
   def new
     @book = current_user.books.build if signed_in?
     @book.book_pages.build(page_num:1)
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update_attributes(params[:book])
+      flash[:success] = "Book updated"
+      redirect_to @book
+    else
+      render 'edit'
+    end
   end
 
   def show
