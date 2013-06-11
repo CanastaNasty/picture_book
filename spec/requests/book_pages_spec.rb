@@ -33,7 +33,7 @@ describe "Book pages" do
 
       before do
         fill_in 'book_title', with: "Lorem ipsum"
-        fill_in 'book_pages_attributes_0_picture', with: "/assets/picture_book.png"
+        fill_in 'book_book_pages_attributes_0_picture', with: "/assets/picture_book.png"
       end
 
       it "should create a book" do
@@ -58,5 +58,13 @@ describe "Book pages" do
 
     it { should have_selector('title', text: full_title(book.title)) }
     it { should have_selector('h1', text: book.title) }
+
+    describe "pagination" do
+      before(:all) { 5.times { FactoryGirl.create(:page, book: book) } }
+      after(:all) { Book.delete_all }
+
+      it { should have_selector('div.pagination') }
+      it { should have_content(@book.pages.count) }
+    end
   end
 end

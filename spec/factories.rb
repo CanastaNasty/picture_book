@@ -14,4 +14,10 @@ FactoryGirl.define do
   	title "Lorem Ipsum"
   	user
   end
+
+  factory :page do
+    sequence(:picture) { |n| "picture_#{n}" }
+    sequence(:sound) { |n| "sound_#{n}" }
+    sequence(:page_num) { |n| "#{n}" }
+  end
 end

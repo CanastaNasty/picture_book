@@ -1,11 +1,12 @@
-<%= form_for(@book) do |f| %>
+<%= nested_form_for(@book) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field span4">
     <%= f.text_field :title, placeholder: "Title of new book" %>
     <div>
-      <%= f.fields_for(:pages) do |builder| %>
+      <%= f.fields_for(:book_pages) do |builder| %>
         <%= render 'shared/page_form', f: builder %>
       <% end %>
+      <p><%= f.link_to_add "Add a page", :book_pages %></p>
     </div>
   </div>
     <%= f.submit "Create", class: "btn btn-large btn-primary" %>

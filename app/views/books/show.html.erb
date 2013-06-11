@@ -4,7 +4,9 @@
     <%= @book.title %>
   </h1>
   <section class="Page">
-    <% if @book.pages.any? %>
+    <% if @book.book_pages.any? %>
+      <%= render @book_pages %>
+      <%= will_paginate @book_pages %>
     <% end %>
   </section>   
 </div>

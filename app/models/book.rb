@@ -1,11 +1,11 @@
 class Book < ActiveRecord::Base
-  attr_accessible :cover, :title, :pages_attributes
+  attr_accessible :cover, :title, :book_pages_attributes
   belongs_to :user
-  has_many :pages, dependent: :destroy
-  accepts_nested_attributes_for :pages, allow_destroy: :true
+  has_many :book_pages, class_name: :Page, dependent: :destroy
+  accepts_nested_attributes_for :book_pages, allow_destroy: :true
   before_validation do
-  	pages.each do |page|
-  		page.book = self
+  	book_pages.each do |book_page|
+  		book_page.book = self
   	end
   end
 

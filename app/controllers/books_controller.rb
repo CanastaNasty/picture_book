@@ -4,11 +4,12 @@ class BooksController < ApplicationController
 
   def new
     @book = current_user.books.build if signed_in?
-    @book.pages.build
+    @book.book_pages.build(page_num:1)
   end
 
   def show
     @book = Book.find(params[:id])
+    @book_pages = @book.book_pages.paginate(page: params[:page], per_page: 1)
   end
 
   def create

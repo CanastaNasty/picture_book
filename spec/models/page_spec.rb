@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Page do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:book) { FactoryGirl.create(:book) }
-  before { @page = book.pages.build(picture: "Lorem", sound: "ipsum") }
+describe "Page" do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:book) { FactoryGirl.create(:book) }
+  before { @page = book.book_pages.build(picture: "Lorem", sound: "ipsum", page_num: 1) }
 
   subject { @page }
 
@@ -11,6 +11,7 @@ describe Page do
   it { should respond_to(:sound) }
   it { should respond_to(:book_id) }
   it { should respond_to(:book) }
+  it { should respond_to(:page_num) }
   its(:book) { should == book }
 
   it { should be_valid }
