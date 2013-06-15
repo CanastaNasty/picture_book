@@ -1,6 +1,7 @@
 # Picture Book
 
 To Do:
+* Get working on Heroku
 * Create index for all books
 * Allow books to be public or private
 * Standardize page size
