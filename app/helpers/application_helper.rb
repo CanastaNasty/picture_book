@@ -19,6 +19,7 @@ module ApplicationHelper
   def safe_audio_tag(source, options = {})
   	if source != nil
   	  audio_tag(source, options)
+  	else
   	end
   end
 end
