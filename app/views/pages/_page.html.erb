@@ -1,4 +1,4 @@
-<%= image_tag(page.picture, alt: page.page_num) %>
+<%= safe_image_tag(page.picture, alt: page.page_num) %>
 <div class="row">
-<%= audio_tag(page.sound, autoplay: true, controls: true) %>
+<%= safe_audio_tag(page.sound, autoplay: true, controls: true) %>
 </div>
