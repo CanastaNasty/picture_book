@@ -17,9 +17,7 @@ module ApplicationHelper
   end
 
   def safe_audio_tag(source, options = {})
-  	if source != nil
-  	  audio_tag(source, options)
-  	else
-  	end
+  	source ||= "/assets/picture_book.mp3"
+    audio_tag(source, options)
   end
 end
