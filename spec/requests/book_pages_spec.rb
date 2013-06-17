@@ -20,11 +20,11 @@ describe "Book pages" do
     describe "with invalid information" do
 
       it "should not create a book" do
-        expect { click_button "Create" }.not_to change(Book, :count)
+        expect { click_button "Submit" }.not_to change(Book, :count)
       end
 
       describe "error messages" do
-        before { click_button "Create" }
+        before { click_button "Submit" }
         it { should have_content('error') } 
       end
     end
@@ -37,7 +37,7 @@ describe "Book pages" do
       end
 
       it "should create a book" do
-        expect { click_button "Create" }.to change(Book, :count).by(1)
+        expect { click_button "Submit" }.to change(Book, :count).by(1)
       end
     end
   end

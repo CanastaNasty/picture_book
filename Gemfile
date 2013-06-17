@@ -7,9 +7,9 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'nested_form', '0.3.2'
+gem 'pg', '0.14.1'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.7'
   gem 'rspec-rails', '2.13.0'
   gem 'guard-rspec', '2.5.0'
   gem 'guard-spork', '1.5.0'
@@ -38,5 +38,4 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.14.1'
 end
