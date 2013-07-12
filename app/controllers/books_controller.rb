@@ -7,6 +7,10 @@ class BooksController < ApplicationController
     @book.book_pages.build(page_num:1)
   end
 
+  def index
+    @books = Book.paginate(page: params[:page])
+  end
+
   def edit
     @book = Book.find(params[:id])
   end

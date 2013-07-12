@@ -7,8 +7,27 @@ describe "Book pages" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:book) { FactoryGirl.create(:book, user: user) }
   before do
-    sign_in user
-    
+    sign_in user  
+  end
+
+  describe "index" do
+    before { visit books_path }
+
+    it { should have_selector('title', text: 'All books') }
+    it { should have_selector('h1',    text: 'All books') }
+
+    describe "pagination" do
+
+      before(:all) { 30.times { FactoryGirl.create(:book, user: user) } }
+
+      it { should have_selector('div.pagination') }
+
+      it "should list each user" do
+        Book.paginate(page: 1).each do |book|
+          page.should have_selector('li', text: book.title)
+        end
+      end
+    end
   end
 
   describe "book creation" do
@@ -64,8 +83,8 @@ describe "Book pages" do
       after(:all) { Book.delete_all }
 
       it { should have_selector('div.pagination') }
-      it { should have_content(Book.pages.count) }
       it { should have_selector('audio') }
     end
   end
+  after(:all)  { User.delete_all }
 end
